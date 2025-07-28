@@ -25,6 +25,7 @@ Set-ItemProperty -Path "HKCU:\Control Panel\Mouse\MouseThreshold2" -Value 0
 Write-Host "Enabling Dark Mode..."
 Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme" -Value 0
 Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "SystemUsesLightTheme" -Value 0
+Set-ItemProperty -Path "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\TaskbarDeveloperSettings\" -Name "TaskbarEndTask" -Value 1 # i opened up a whole ahh procmon for ts bruh regedit has not that good documentation
 
 Write-Host "Editing PATH..."
 $path = [System.Environment]::GetEnvironmentVariable('Path', 'Machine')
