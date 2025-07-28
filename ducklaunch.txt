@@ -13,5 +13,7 @@ STRING mkdir setup
 ENTER
 STRING cd setup
 ENTER
+STRING iwr "https://raw.githubusercontent.com/Sreekar617/setup-ducky/refs/heads/main/OOSU10.cfg" -OutFile "OOSU10.cfg"
+ENTER
 STRING irm https://raw.githubusercontent.com/Sreekar617/setup-ducky/refs/heads/main/main.ps1 | iex
 ENTER
