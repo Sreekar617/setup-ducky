@@ -42,9 +42,8 @@ if ($response.body -match "(https[^\s`"']*WPILib_Windows[^\s`"'\)]*)") {
 
 $mnt = Mount-DiskImage -ImagePath "./wpilib.iso" -PassThru  
 $isodrive = ($mnt | Get-Volume).DriveLetter + ":" # this feels hacky but i bet everything feels hacky in powershell
-New-Item -ItemType Directory -Path "./wpilib" -Force 
+mkdir wpilib # call me linux
 Copy-Item -Path "$isodrive\*" -Destination "./wpilib" -Recurse -Force
-# execute wpilib.exe
 ./wpilib/wpilib.exe
 # configure your own installation bozo
 Start-Process "https://imgur.com/a/name-4k-wallpaper-galore-ShAOh" # 50-50 they want to use ts wallpapers so leave it there
