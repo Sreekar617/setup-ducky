@@ -10,9 +10,9 @@ choco install shutup10 discord firefox steam nodejs powertoys k-litecodecpackful
 winget install -e --id Mojang.MinecraftLauncher
 
 # various config
-OOSU10.exe OOSU10.cfg /nosrp
-netsh interface ipv4 set dnsservers name="Wi-Fi" static 1.1.1.1 index=1 # what happened to index 0 lmao
-netsh interface ipv4 set dnsservers name="Wi-Fi" static 1.0.0.1 index=2
+".\OOSU10.exe" OOSU10.cfg /nosrp
+netsh interface ipv4 set dnsservers name="Wi-Fi" static 1.1.1.1 # what happened to index 0 lmao
+# netsh interface ipv4 set dnsservers name="Wi-Fi" static 1.0.0.1
 Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "HideFileExt" -Value 0
 Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "Hidden" -Value 1
 New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force
@@ -44,14 +44,16 @@ if ($body -match "(https[^\s`"']*WPILib_Windows[^\s`"'\)]*)") {
     Invoke-WebRequest -Uri $url -OutFile "wpilib.iso"
 }
 
-$mnt = Mount-DiskImage -ImagePath "./wpilib.iso" -PassThru  
+$mnt = Mount-DiskImage -ImagePath "$PWD/wpilib.iso" -PassThru  
 $isodrive = ($mnt | Get-Volume).DriveLetter + ":" # this feels hacky but i bet everything feels hacky in powershell
 mkdir wpilib # call me linux
 Copy-Item -Path "$isodrive\*" -Destination "./wpilib" -Recurse -Force
-./wpilib/wpilib.exe
+./wpilib/WPILibInstaller.exe
 # configure your own installation bozo
 Write-Host "Installing Linux..."
 wsl --install # ts so Wait... This isn't what I typed! now
 Start-Process "https://imgur.com/a/name-4k-wallpaper-galore-ShAOh" # 50-50 they want to use ts wallpapers so leave it there
 Start-Process "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 Start-Process "https://github.com/Sreekar617/setup-ducky"
+
+Write-Host "Ducky Finished Running!"
