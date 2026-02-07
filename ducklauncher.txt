@@ -9,7 +9,7 @@ DELAY 5000
 REM powershell boot up faster won't you
 STRING Set-ExecutionPolicy Bypass -Scope Process -Force
 ENTER
-STRING cd C:
+STRING cd C:/
 ENTER
 STRING mkdir setup
 ENTER
